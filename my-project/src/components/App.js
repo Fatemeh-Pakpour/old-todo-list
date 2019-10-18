@@ -13,7 +13,7 @@ class App extends Component {
         
       },
       {
-        title: "study group meeting at Zendesk at 2:00 pm",
+        title: "study group meeting",
         id: 2,
         
       },

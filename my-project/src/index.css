@@ -187,6 +187,54 @@ input[type="checkbox"].styled:checked  + label {
  
 }
 
+/*************************
+Media Queries
+*************************/
+
+@media only screen and (max-width: 480px) {
+  .todo-ist{
+    width:300px;
+  }
+  .task {
+    font-size: 8px;
+}
+.task-title{
+  width: 100px;
+}
+header h1 {
+  font-size: 15px;
+}
+header span {
+  font-size: 10px;
+  margin-right: 10px;
+}
+}
+
+@media only screen and (min-width: 768px),
+       only screen and (min-width: 700px) and (orientation: landscape) {
+
+  .todo-ist{
+    width:550px;
+  }
+  .task {
+    font-size: 12px;
+}
+.task-title{
+  width: 100px;
+}
+}
+
+@media only screen and (min-width: 1140px) {
+  .todo-ist{
+    width:700px;
+  }
+  .task {
+    font-size: 15px;
+}
+ 
+  
+}
+
 
 
 
