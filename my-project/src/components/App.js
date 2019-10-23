@@ -6,43 +6,48 @@ import NewTask from "./NewTask";
 
 class App extends Component {
   state = {
-    tasks: [
-      {
-        title: "hand in my homework",
-        id: 1,
-        
-      },
-      {
-        title: "study group meeting",
-        id: 2,
-        
-      },
-      {
-        title: "play table tennis",
-        id: 3,
-      }
-    ]
-  };
+    tasks: []
+    
+    };
+      
+  
 
   // task id counter
-  prevTaskId = 3;
+  prevTaskId = 0;
 
   handleAddNewTask = title => {
-    this.setState({
-      tasks: [
-        ...this.state.tasks,
-        {
-          title,
-          id: (this.prevTaskId += 1)
-        }
-      ]
-    });
-  };
+    // this.setState({
+    //   tasks: [
+    //     ...this.state.tasks,
+    //     {
+    //       title,
+    //       id: (this.prevTaskId += 1)
+    //     }
+    //   ]
+    // });
+    const task = {
+            title,
+            id: new Date()
+          }
 
+    this.setState({tasks: [...this.state.tasks, task]}, () => {
+      localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
+    })
+
+
+  };
+  componentDidMount() {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    this.setState({
+      tasks: tasks
+    })
+  }
   handleRemoveTask = id => {
     this.setState(prevState => ({
       tasks: prevState.tasks.filter(task => task.id !== id)
-    }));
+    }), () => {
+      localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
+    });
   };
   handleEditTask = (id, newTaskTitle) => {
     const index = this.state.tasks.findIndex(task => task.id === id);
@@ -50,12 +55,15 @@ class App extends Component {
     newArray.splice(index, 1, { ...newArray[index], title: newTaskTitle });
     this.setState({
       tasks: newArray
+    }, () => {
+      localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
     });
   };
   render() {
     return (
       <div className="todo-ist">
-        <Header title="To do list" totalTask={this.state.tasks.length} />
+        <Header title="To do list"  />
+        {/* totalTask={this.state.tasks.length} */}
         <div className="tasks-container">
           {this.state.tasks.map(task => (
             <Task
