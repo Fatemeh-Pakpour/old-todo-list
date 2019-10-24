@@ -8,11 +8,11 @@ import EditDelete from "./EditDelete";
 class Task extends PureComponent {
   state = { isEditing: false };
 
-  // constructor() {
-  //   super();
-  //   this.toggleForm = this.toggleForm.bind(this);
-  //   this.saveTask = this.saveTask.bind(this);
-  // }
+  constructor() {
+    super();
+    this.toggleForm = this.toggleForm.bind(this);
+    this.saveTask = this.saveTask.bind(this);
+  }
   saveTask = (event)=> {
     event.preventDefault();
     const { id, editTask } = this.props;
@@ -30,9 +30,8 @@ class Task extends PureComponent {
   }
   render() {
      
-    const { taskTitle, id, removeTask } = this.props;
-    console.log(this.props.title);
-
+    const { taskTitle ,id ,date, removeTask } = this.props;
+console.log(this.props);
     return (
       <div className="task">
         <span className="task-title">
@@ -41,6 +40,7 @@ class Task extends PureComponent {
             <input type="checkbox" className="styled" 
             />
             <label>{taskTitle}</label>
+            <label>{date}</label>
             </span>
           ) : (
             <form className ="edit-form" onSubmit={this.saveTask}>

@@ -186,6 +186,9 @@ input[type="checkbox"].styled:checked  + label {
   border: none; 
  
 }
+.date-picker{
+  background-color: #EEEEEE;
+}
 
 /*************************
 Media Queries

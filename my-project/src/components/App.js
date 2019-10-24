@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header";
 import Task from "./Task";
 import NewTask from "./NewTask";
+import * as moment from 'moment';
 
 
 class App extends Component {
@@ -9,34 +10,21 @@ class App extends Component {
     tasks: []
     
     };
-      
-  
+  handleAddNewTask = (title ,date) => {
+    const taskItem = {
+      title,
+      date: moment(date).format('DD-MM-YYYY'),
+      id: new Date()
+    }
 
-  // task id counter
-  prevTaskId = 0;
-
-  handleAddNewTask = title => {
-    // this.setState({
-    //   tasks: [
-    //     ...this.state.tasks,
-    //     {
-    //       title,
-    //       id: (this.prevTaskId += 1)
-    //     }
-    //   ]
-    // });
-    const task = {
-            title,
-            id: new Date()
-          }
-
-    this.setState({tasks: [...this.state.tasks, task]}, () => {
+   
+    this.setState({tasks: [...this.state.tasks, taskItem]}, () => {
       localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
     })
-
-
   };
-  componentDidMount() {
+  
+ 
+  componentDidMount(){
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     this.setState({
       tasks: tasks
@@ -59,7 +47,13 @@ class App extends Component {
       localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
     });
   };
+  handleDateChange =(date) =>{
+    this.setState({
+      date: date
+    })
+  }
   render() {
+    console.log('date:',this.state.tasks.date);
     return (
       <div className="todo-ist">
         <Header title="To do list"  />
@@ -68,8 +62,8 @@ class App extends Component {
           {this.state.tasks.map(task => (
             <Task
               taskTitle={task.title}
+              date ={task.date}
               id={task.id}
-              done={task.done}
               key={task.id}
               removeTask={this.handleRemoveTask}
               editTask={this.handleEditTask}
@@ -78,7 +72,10 @@ class App extends Component {
           ))}
         </div>
 
-        <NewTask addNewTask={this.handleAddNewTask} />
+        <NewTask 
+        addNewTask={this.handleAddNewTask}
+        changeDate = {this.handleDateChange}
+         />
       </div>
     );
   }
