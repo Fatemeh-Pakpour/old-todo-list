@@ -10,7 +10,7 @@ class App extends Component {
     tasks: []
     
     };
-  handleAddNewTask = (title ,date) => {
+  handleAddNewTask = (title,date) => {
     const taskItem = {
       title,
       date: moment(date).format('DD-MM-YYYY'),
@@ -47,13 +47,13 @@ class App extends Component {
       localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
     });
   };
-  handleDateChange =(date) =>{
+  handleDateChange =(d) =>{
+    console.log(d)
     this.setState({
-      date: date
+      date: d
     })
   }
   render() {
-    console.log('date:',this.state.tasks.date);
     return (
       <div className="todo-ist">
         <Header title="To do list"  />
