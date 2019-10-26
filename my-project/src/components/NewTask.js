@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import DatePicker from 'react-datepicker';
+// import Form from "react-bootstrap/Form";
 
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -8,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class NewTask extends Component {
   state ={
-    changedDate:new Date()
+    changedDate:new Date("2015-06-17 14:24:36")
   }
   handleSubmit = event => {
     event.preventDefault();
@@ -43,13 +44,12 @@ class NewTask extends Component {
         <DatePicker
           className = "date-picker"
           selected={date}
-          // 
           onChange={(date) => {
             console.log(date)
             this.handleChange(date) 
             }}
           name="date"
-          dateFormat="MM/DD/YYYY"
+          dateFormat="YYYY-MM-DD"
           placeholderText= "Select the Date"
         />  
         <input type="submit" value="Add " />  

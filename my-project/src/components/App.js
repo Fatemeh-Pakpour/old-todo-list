@@ -3,6 +3,7 @@ import Header from "./Header";
 import Task from "./Task";
 import NewTask from "./NewTask";
 import * as moment from 'moment';
+import Container from "react-bootstrap/Container";
 
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
   handleAddNewTask = (title,date) => {
     const taskItem = {
       title,
-      date: moment(date).format('DD-MM-YYYY'),
+      date: moment(date).format("YYYY-MM-DD"),
       id: new Date()
     }
 
@@ -55,9 +56,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="todo-ist">
-        <Header title="To do list"  />
-        {/* totalTask={this.state.tasks.length} */}
+      <Container className ="todo-ist">
+        <Header title="To do list"  
+        totalTask={this.state.tasks.length}
+        />
         <div className="tasks-container">
           {this.state.tasks.map(task => (
             <Task
@@ -67,7 +69,7 @@ class App extends Component {
               key={task.id}
               removeTask={this.handleRemoveTask}
               editTask={this.handleEditTask}
-              
+  
             />
           ))}
         </div>
@@ -76,7 +78,7 @@ class App extends Component {
         addNewTask={this.handleAddNewTask}
         changeDate = {this.handleDateChange}
          />
-      </div>
+      </Container>
     );
   }
 }
