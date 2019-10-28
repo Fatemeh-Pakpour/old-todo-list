@@ -1,11 +1,18 @@
 import React, { PureComponent } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle} from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import EditDelete from "./EditDelete";
-
+import PropTypes from "prop-types";
+import moment from "moment";
 
 class Task extends PureComponent {
+  static propTypes = {
+    taskTitle: PropTypes.string.isRequired,
+    id: PropTypes.instanceOf(Date),
+    date: PropTypes.instanceOf(moment).isRequired,
+    removeTask: PropTypes.func
+  };
+
   state = { isEditing: false };
 
   constructor() {
@@ -13,7 +20,7 @@ class Task extends PureComponent {
     this.toggleForm = this.toggleForm.bind(this);
     this.saveTask = this.saveTask.bind(this);
   }
-  saveTask = (event)=> {
+  saveTask = event => {
     event.preventDefault();
     const { id, editTask } = this.props;
     const newTaskTitle = event.target.taskTitle.value;
@@ -21,45 +28,42 @@ class Task extends PureComponent {
     this.setState({
       isEditing: false
     });
-  }
+  };
 
-  toggleForm =() =>{
+  toggleForm = () => {
     this.setState({
       isEditing: !this.state.isEditing
     });
-  }
+  };
   render() {
-     
-    const { taskTitle ,id ,date, removeTask } = this.props;
-console.log(this.props);
+    const { taskTitle, id, date } = this.props;
+    console.log(this.props);
     return (
       <div className="task">
         <span className="task-title">
           {!this.state.isEditing ? (
-            <span className ="task-parent">
-            <input type="checkbox" className="styled" 
-            />
-            <label>{taskTitle}</label>
-            <label>{date}</label>
+            <span className="task-parent">
+              <input type="checkbox" className="styled" />
+              <label>{taskTitle}</label>
+              <label>{date}</label>
             </span>
           ) : (
-            <form className ="edit-form" onSubmit={this.saveTask}>
+            <form className="edit-form" onSubmit={this.saveTask}>
               <input name="taskTitle" type="text" defaultValue={taskTitle} />
-              <button><FontAwesomeIcon icon= {faCheckCircle}/></button>
+              <button>
+                <FontAwesomeIcon icon={faCheckCircle} />
+              </button>
             </form>
           )}
-            <EditDelete
-                removeTask={removeTask}
-                id={id}
-                isEditing={this.state.isEditing}
-                toggleForm={this.toggleForm}
-            />
+          <EditDelete
+            id={id}
+            isEditing={this.state.isEditing}
+            toggleForm={this.toggleForm}
+          />
         </span>
       </div>
     );
   }
-
-  
 }
 
 export default Task;

@@ -203,6 +203,9 @@ Media Queries
     margin-left:-0.5rem; 
     
   }
+  .date-picker ::placeholder{
+    font-size: 0.5 rem;
+  }
   .task {
     font-size: 8px;
 }

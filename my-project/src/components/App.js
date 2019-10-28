@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import Task from "./Task";
 import NewTask from "./NewTask";
 import * as moment from 'moment';
 import Container from "react-bootstrap/Container";
+import TaskList from "./TaskList";
+import {Provider} from './Context';
 
 
 class App extends Component {
@@ -48,37 +49,35 @@ class App extends Component {
       localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
     });
   };
-  handleDateChange =(d) =>{
-    console.log(d)
+  handleDateChange =(date) =>{
+    console.log(date)
     this.setState({
-      date: d
+      date: date
     })
   }
   render() {
     return (
-      <Container className ="todo-ist">
-        <Header title="To do list"  
-        totalTask={this.state.tasks.length}
-        />
-        <div className="tasks-container">
-          {this.state.tasks.map(task => (
-            <Task
-              taskTitle={task.title}
-              date ={task.date}
-              id={task.id}
-              key={task.id}
-              removeTask={this.handleRemoveTask}
-              editTask={this.handleEditTask}
-  
-            />
-          ))}
-        </div>
+      <Provider value = {{
+        tasks : this.state.tasks,
+        actions :{
+          removeTask : this.handleRemoveTask,
+          addNewTask :this.handleAddNewTask
 
-        <NewTask 
-        addNewTask={this.handleAddNewTask}
-        changeDate = {this.handleDateChange}
-         />
-      </Container>
+        }
+        }}> 
+        <Container className ="todo-ist">
+          <Header totalTask={this.state.tasks.length}/>
+          <div className="tasks-container">
+            <TaskList
+              editTask={this.handleEditTask}
+            />
+            </div>
+          <NewTask 
+            changeDate = {this.handleDateChange}
+          />
+        </Container>
+      </Provider>  
+     
     );
   }
 }
