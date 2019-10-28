@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { Consumer } from "./Context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import EditDelete from "./EditDelete";
@@ -40,27 +41,45 @@ class Task extends PureComponent {
     console.log(this.props);
     return (
       <div className="task">
-        <span className="task-title">
-          {!this.state.isEditing ? (
-            <span className="task-parent">
-              <input type="checkbox" className="styled" />
-              <label>{taskTitle}</label>
-              <label>{date}</label>
-            </span>
-          ) : (
-            <form className="edit-form" onSubmit={this.saveTask}>
-              <input name="taskTitle" type="text" defaultValue={taskTitle} />
-              <button>
-                <FontAwesomeIcon icon={faCheckCircle} />
-              </button>
-            </form>
-          )}
-          <EditDelete
-            id={id}
-            isEditing={this.state.isEditing}
-            toggleForm={this.toggleForm}
-          />
-        </span>
+        <Consumer>
+          {context => {
+            const saveTask = event => {
+              event.preventDefault();
+              const newTaskTitle = event.target.taskTitle.value;
+              context.actions.editTask(id, newTaskTitle);
+              this.setState({
+                isEditing: false
+              });
+            };
+            return (
+              <span className="task-title">
+                {!this.state.isEditing ? (
+                  <span className="task-parent">
+                    <input type="checkbox" className="styled" />
+                    <label>{taskTitle}</label>
+                    <label>{date}</label>
+                  </span>
+                ) : (
+                  <form className="edit-form" onSubmit={saveTask}>
+                    <input
+                      name="taskTitle"
+                      type="text"
+                      defaultValue={taskTitle}
+                    />
+                    <button>
+                      <FontAwesomeIcon icon={faCheckCircle} />
+                    </button>
+                  </form>
+                )}
+                <EditDelete
+                  id={id}
+                  isEditing={this.state.isEditing}
+                  toggleForm={this.toggleForm}
+                />
+              </span>
+            );
+          }}
+        </Consumer>
       </div>
     );
   }

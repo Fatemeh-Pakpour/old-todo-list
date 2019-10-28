@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class NewTask extends Component {
   state ={
-    changedDate:new Date("2015-06-17 14:24:36")
+    changedDate:new Date()
   }
   // handleSubmit = event => {
   //   event.preventDefault();
