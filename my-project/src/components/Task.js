@@ -16,11 +16,6 @@ class Task extends PureComponent {
 
   state = { isEditing: false };
 
-  constructor() {
-    super();
-    this.toggleForm = this.toggleForm.bind(this);
-    this.saveTask = this.saveTask.bind(this);
-  }
   saveTask = event => {
     event.preventDefault();
     const { id, editTask } = this.props;
@@ -38,7 +33,6 @@ class Task extends PureComponent {
   };
   render() {
     const { taskTitle, id, date } = this.props;
-    console.log(this.props);
     return (
       <div className="task">
         <Consumer>

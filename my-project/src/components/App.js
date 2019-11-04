@@ -4,21 +4,15 @@ import NewTask from "./NewTask";
 import Container from "react-bootstrap/Container";
 import TaskList from "./TaskList";
 
-
-const App = ()=>{
+const App = () => {
   return (
     <Container className="todo-ist">
-      <Header 
-      // totalTask={this.state.tasks.length}
-        />
-      <div className="tasks-container">
+      <Header />
+      <Container className="tasks-container">
         <TaskList />
-      </div>
+      </Container>
       <NewTask />
     </Container>
-  
   );
-}
-
-
+};
 export default App;

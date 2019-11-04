@@ -2,22 +2,20 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 body {
-  background: #e8e7e7; 
   font-family: arial;
   text-transform: uppercase;
 }
 
 header {
-  color: #FFF;
+  color: #fff;
   padding: 14px 10px;
   text-align: center;
   display: flex;
   align-items: center;
-  background-color: #8063FA;
-  border-bottom: solid 2px #D4CAFF;
+  background-color: #8063fa;
+  border-bottom: solid 2px #d4caff;
   border-radius: 0.8em 0.8em 0 0;
-  box-shadow: 0 2px 0 rgb(133, 104, 250); 
-  
+  box-shadow: 0 2px 0 rgb(133, 104, 250);
 }
 
 header h1 {
@@ -28,14 +26,14 @@ header h1 {
 }
 
 /* FORMS */
-.task-form{
+.task-form {
   display: flex;
-  background-color: #8063FA;
+  background-color: #8063fa;
   border-radius: 0 0 0.8em 0.8em;
 }
-.task-form input[type=text] {
-  background-color: #5B45B9;
-  color: #C7BCF8;
+.task-form input[type="text"] {
+  background-color: #5b45b9;
+  color: #c7bcf8;
   padding: 1rem;
   margin: 1rem 0.8rem 1rem 1rem;
   border-radius: 0.5rem;
@@ -43,7 +41,7 @@ header h1 {
   border-width: 0 0 1px 0;
 }
 
- input[type=text] {
+input[type="text"] {
   flex-grow: 1;
   text-shadow: none;
   text-transform: uppercase;
@@ -51,20 +49,21 @@ header h1 {
   outline: none;
 }
 
-.task-form input[type=text]::-webkit-input-placeholder{
-  color: #C7BCF8;
-  /* letter-spacing: 2px;  */
+.task-form input[type="text"]::-webkit-input-placeholder {
+  color: #c7bcf8;
+  letter-spacing: 2px;
+  font-size: 1rem;
 }
 
-input[type=text]:focus{
+input[type="text"]:focus {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-input[type=submit] {
+input[type="submit"] {
   display: block;
-  margin: 15px 15px 15px 0; 
+  margin: 15px 15px 15px 0;
   padding: 1rem;
-  background-color: #44338D;
+  background-color: #44338d;
   border-radius: 0.5rem;
   border: none;
   color: #fff;
@@ -75,39 +74,38 @@ input[type=submit] {
   cursor: pointer;
 }
 
-.task-form button, 
-.task-form input[type=submit] {
+.task-form button,
+.task-form input[type="submit"] {
   outline: none;
-  transition: background-color 0.2s ease,
-              color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 /* COMPONENT STYLES -------------------- */
-.todo-ist{
+.todo-ist {
   background: #fff;
-  margin: 70px auto; 
-   
+  margin: 70px auto;
+
   /* border-radius: 6px; */
   overflow: auto;
 }
 
 .task {
   display: flex;
-  font-size: 1em;
-  border-bottom: solid 2px #EEEEEE;
+  font-size: 1rem;
+  border-bottom: solid 2px #eeeeee;
   letter-spacing: 2px;
   padding: 10px 1px;
 }
 
-.tasks-container{
-  height:300px;
+.tasks-container {
+  height: 300px;
   overflow: auto;
-  border :1px solid #D4CAFF;
+  border: 1px solid #d4caff;
   border-bottom: none;
-  border-top:none;
+  border-top: none;
 }
 
 .task:last-of-type {
-  border-bottom-color: #D4CAFF;
+  border-bottom-color: #d4caff;
 }
 
 .task-title:hover .remove-task {
@@ -117,135 +115,130 @@ input[type=submit] {
 .task-title {
   flex-grow: 1;
   line-height: 3.5em;
-  padding: 0 30px;
+  padding-top: 1rem;
   position: relative;
 }
-.style-icon{
+.style-icon {
   font-size: 1.15em;
   border: none;
-  outline: none; 
+  outline: none;
   background: none;
   float: right;
   padding: 0;
   /* visibility: hidden;  */
 }
-.remove-task{
-  color: #EF5350;
+.remove-task {
+  color: #ef5350;
   cursor: pointer;
-  margin: 0 10px 0 0; 
-  visibility: hidden;  
+  margin: 0 10px 0 0;
+  visibility: hidden;
 }
-.edit-task{
-  color:rgb(12, 21, 100);
-  margin:0 2px; 
- 
+.edit-task {
+  color: rgb(12, 21, 100);
+  margin: 0 2px;
 }
-  .task-check{
-  padding-right: 20px;  
-} 
- .task-parent{
-  position: relative; 
-} 
+.task-check {
+  padding-right: 20px;
+}
+.task-parent {
+  position: relative;
+}
 .task-title label {
-  padding:0 20px;
-  
+  padding: 0 20px;
 }
-  input[type="checkbox"].styled:checked:before { 
-  font-family: 'fontawesome';
+
+input[type="checkbox"].styled:checked:before {
+  font-family: "fontawesome";
   content: "\f058";
-  display: inline-block; 
+  display: inline-block;
   color: lawngreen;
-  
-} 
-
-input[type="checkbox"].styled:checked {  
-  position : absolute; 
-  width:0;
-  height:0;    
+  font-size: 1rem;
 }
 
-input[type="checkbox"].styled:checked  + label {
-  text-decoration-line: line-through;  
+input[type="checkbox"].styled:checked {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+input[type="checkbox"].styled:checked + label {
+  text-decoration-line: line-through;
   margin: 0 15px;
-} 
-/* ----Edit Form -----*/
-.edit-form{
-  display: flex;
-  width:450px;
-  height:50px;
-  position: absolute; 
-  border:none;
 }
-.edit-form input[type=text]{
- padding-left :10px;
+
+/* ----Edit Form -----*/
+.edit-form {
+  display: flex;
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  top: 9.5%;
+  left: 2%;
+}
+.edit-form input[type="text"] {
+  padding-left: 2%;
 }
 .edit-form > button {
   background: rgb(224, 223, 228);
   font-size: 20px;
   color: gray;
-  width:50px;
-  border: none; 
- 
+  width: 10%;
+  border: none;
 }
-
+/* /////////?/???????????????????????/// I would like to add a calender icon inside */
+.date-picker::before {
+  font-size: 900;
+  font-family: "Font Awesome 5 Free";
+  content: "f784";
+  display: inline-block;
+}
 
 /*************************
 Media Queries
 *************************/
 
-@media only screen and (max-width: 480px) {
-  input[type=text] {
-    width:90%;
-    /* flex-grow: 1; */
+@media (min-width: 0) and (max-width: 549px) {
+  input[type="text"] {
+    width: 90%;
   }
-  input[type="text"].date-picker{
-    width:100%;
-    margin-left:-0.5rem; 
-    
+  input[type="text"].date-picker {
+    width: 100%;
+    margin-left: -0.4rem;
   }
-  .date-picker ::placeholder{
-    font-size: 0.5 rem;
+  .task-form input[type="text"]::-webkit-input-placeholder {
+    font-size: 0.39rem;
   }
+
   .task {
-    font-size: 8px;
-}
-.task-title{
-  width: 100px;
-}
-header h1 {
-  font-size: 15px;
-}
-header span {
-  font-size: 10px;
-  margin-right: 10px;
-}
+    font-size: 0.5rem;
+  }
+  .task-title {
+    width: 100px;
+  }
+  header h1 {
+    font-size: 15px;
+  }
+  header span {
+    font-size: 10px;
+    margin-right: 10px;
+  }
+  .edit-form > button {
+    width: 25%;
+  }
 }
 
 @media only screen and (min-width: 768px),
-       only screen and (min-width: 700px) and (orientation: landscape) {
-
+  only screen and (min-width: 700px) and (orientation: landscape) {
   .task {
     font-size: 12px;
-}
-.task-title{
-  width: 100px;
-}
+  }
+  .task-title {
+    width: 100px;
+  }
 }
 
 @media only screen and (min-width: 1140px) {
   .task {
     font-size: 15px;
+  }
 }
- 
-  
-}
-
-
-
-
-
-
-
-
-
- 
