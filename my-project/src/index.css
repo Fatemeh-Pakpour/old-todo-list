@@ -185,13 +185,8 @@ input[type="checkbox"].styled:checked + label {
   width: 10%;
   border: none;
 }
-/* /////////?/???????????????????????/// I would like to add a calender icon inside */
-.date-picker::before {
-  font-size: 900;
-  font-family: "Font Awesome 5 Free";
-  content: "f784";
-  display: inline-block;
-}
+
+
 
 /*************************
 Media Queries
@@ -208,7 +203,7 @@ Media Queries
   .task-form input[type="text"]::-webkit-input-placeholder {
     font-size: 0.39rem;
   }
-
+  
   .task {
     font-size: 0.5rem;
   }

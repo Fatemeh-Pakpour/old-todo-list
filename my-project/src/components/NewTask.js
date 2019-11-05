@@ -15,16 +15,12 @@ class NewTask extends Component {
     this.setState({ changedDate: date });
   };
   render() {
-    console.log(this.state);
-    const { date } = this.props;
     return (
       <Consumer>
         {context => {
           const handleSubmit = event => {
             event.preventDefault();
-
             const title = event.target.title.value.trim();
-
             if (!title.length) {
               alert("Please Enter Your Task to the List");
             } else {
@@ -42,16 +38,17 @@ class NewTask extends Component {
               />
               <DatePicker
                 className="date-picker"
-                selected={date}
+                selected={this.state.changedDate}
                 onChange={date => {
                   console.log(date);
                   this.handleChange(date);
                 }}
                 name="date"
-                dateFormat="YYYY-MM-DD"
-                // placeholderText= "YYY-MM-DD"
+                dateFormat="yyyy-MM-dd"
+                placeholder= "YYYY-MM-DD"
+                minDate = {new Date()}
               />
-              <input type="submit" value="Add " />
+              <input className = "add-btn" type="submit" value="Add " />
             </form>
           );
         }}
