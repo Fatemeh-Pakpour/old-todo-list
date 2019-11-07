@@ -48,7 +48,7 @@ class NewTask extends Component {
                 placeholder= "YYYY-MM-DD"
                 minDate = {new Date()}
               />
-              <input className = "add-btn" type="submit" value="Add " />
+              <input type="submit" value="Add " />
             </form>
           );
         }}
