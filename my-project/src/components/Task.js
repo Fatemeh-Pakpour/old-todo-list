@@ -48,11 +48,11 @@ class Task extends PureComponent {
             return (
               <span className="task-title">
                 {!this.state.isEditing ? (
-                  <span className="task-parent">
+                  <div className="task-parent">
                     <input type="checkbox" className="styled" />
-                    <label>{taskTitle}</label>
-                    <label>{date}</label>
-                  </span>
+                    <label className="label-task">{taskTitle}</label>
+                    <label className="label-date">{date}</label>
+                  </div>
                 ) : (
                   <form className="edit-form" onSubmit={saveTask}>
                     <input

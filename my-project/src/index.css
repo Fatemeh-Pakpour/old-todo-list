@@ -143,6 +143,10 @@ input[type="submit"] {
 .task-parent {
   position: relative;
 }
+.label-date{
+  position :absolute;
+  left:60%;
+}
 .task-title label {
   padding: 0 20px;
 }
@@ -216,6 +220,9 @@ Media Queries
   header span {
     font-size: 10px;
     margin-right: 10px;
+  }
+  .edit-form{
+    width:75%;
   }
   .edit-form > button {
     width: 25%;

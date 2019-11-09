@@ -5,11 +5,24 @@ import { Consumer } from "./Context";
 // Datepicker
 import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+let textInput = React.createRef();
 
 class NewTask extends Component {
   state = {
-    changedDate: new Date()
+    changedDate: undefined,
+    activeDateWidget: false
   };
+
+  handleClick() {
+    textInput.current.focus();
+  }
+
+  // changeActiveDateWidget = (event) => {
+  //   event.stopPropagation();
+  //   this.setState({
+  //     activeDateWidget: !this.state.activeDateWidget,
+  //   });
+  // }
 
   handleChange = date => {
     this.setState({ changedDate: date });
@@ -34,19 +47,21 @@ class NewTask extends Component {
               <input
                 type="text"
                 name="title"
+                ref={textInput}
                 placeholder="Enter the new task"
               />
               <DatePicker
                 className="date-picker"
                 selected={this.state.changedDate}
                 onChange={date => {
-                  console.log(date);
+                  // console.log(date);
                   this.handleChange(date);
                 }}
+                onSelect={this.handleClick}
                 name="date"
                 dateFormat="yyyy-MM-dd"
-                placeholder= "YYYY-MM-DD"
-                minDate = {new Date()}
+                placeholderText="YYYY-MM-DD"
+                minDate={new Date()}
               />
               <input type="submit" value="Add " />
             </form>
